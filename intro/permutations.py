@@ -1,3 +1,7 @@
+"""
+Create permutation, such that consecutive difference is greater than 1
+"""
+
 n = int(input())
 
 if n == 1:
