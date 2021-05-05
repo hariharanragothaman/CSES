@@ -28,10 +28,7 @@ def palindrome_reorder(s):
         middle = ""
 
         # Finding the pivot:
-        for (
-            k,
-            v,
-        ) in ctr.items():
+        for k, v in ctr.items():
             if v % 2 != 0:
                 middle = k * v
                 pivot = k
