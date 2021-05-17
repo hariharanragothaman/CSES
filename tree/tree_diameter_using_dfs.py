@@ -15,14 +15,14 @@ def find_tree_diameter(g, n):
     diameter_of_tree = 0
 
     for i in range(1, n+1):
-        # print(f"Considering {i} as root")
+        print(f"Considering {i} as root")
         curr_max_length = 0
         q = deque()
         q.append((i, 0))
         visited = set()
 
         while q:
-            # print("The queue is:", q)
+            print("The queue is:", q)
             node, length = q.pop()
             visited.add(node)
             curr_max_length = max(length, curr_max_length)
@@ -31,8 +31,9 @@ def find_tree_diameter(g, n):
                 if nei not in visited:
                     q.append((nei, length+1))
 
-        # print(f"The max_length for {i} is: {curr_max_length}")
+        print(f"The max_length for {i} is: {curr_max_length}")
         diameter_of_tree = max(curr_max_length, diameter_of_tree)
+        print("*****************************************************")
 
     return diameter_of_tree
 
