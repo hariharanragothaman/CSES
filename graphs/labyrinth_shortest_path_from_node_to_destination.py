@@ -1,5 +1,7 @@
-from collections import deque
 from heapq import heappop, heappush
+import resource, sys
+resource.setrlimit(resource.RLIMIT_STACK, (2**29, -1))
+sys.setrecursionlimit(10**7)
 
 
 def shortest_path(arr, R, C):
@@ -10,14 +12,13 @@ def shortest_path(arr, R, C):
 
     # In this we just applied raw-logic and just converted it into heap
     """
-    start, end = None, None
-    # figuring out start and end indexes
-    for i in range(R):
-        for j in range(C):
-            if arr[i][j] == "A":
-                start = (i, j)
-            elif arr[i][j] == "B":
-                end = (i, j)
+    def find_start():
+        for i in range(R):
+            for j in range(C):
+                if arr[i][j] == "A":
+                    return i, j
+
+    start = find_start()
 
     # Sub-routine to get neighbours
     def neighbours(r, c):
@@ -31,8 +32,7 @@ def shortest_path(arr, R, C):
                 yield rows, cols, _direction
 
     # Actual Solution to the problem
-    q = []
-    q.append((0, start, ""))
+    q = [(0, start, "")]
     visited = set()
     path_exists = False
     shortest_dist = float("inf")
