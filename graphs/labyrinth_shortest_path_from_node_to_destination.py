@@ -53,7 +53,7 @@ def shortest_path(arr, R, C):
                     shortest_dist = dist + 1
                     result_path = path + direction
 
-            if arr[nr][nc] == "." and (nr, nc) not in visited:
+            elif arr[nr][nc] == "." and (nr, nc) not in visited:
                 visited.add((nr, nc))
                 heappush(q, (dist + 1, (nr, nc), path + direction))
                 # q.append((dist + 1, (nr, nc), path + direction))
