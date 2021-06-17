@@ -25,28 +25,21 @@ def binary_search(array, val):
     else:
         return -1
 
+
 n, m, k = map(int, input().split())
 desired_apt_size = list(map(int, input().split()))
 apt_size = list(map(int, input().split()))
 
-hmap = {}
-for i, val in enumerate(desired_apt_size):
-    hmap[val] = i
-
-# Sorting both the lists
 desired_apt_size.sort()
 apt_size.sort()
-
 result_count = 0
 
+
 for d in desired_apt_size:
-    # print("The accepted range",accepted_range)
-    for value in range(d-k, d+k+1):
+    for value in range(d - k, d + k + 1):
         res = binary_search(apt_size, value)
         if res != -1:
-            # instead of this we can just reduce the count of free apartments to optimize
-            # print(f"The limit found is for {d}, {value}")
-            apt_size.remove(value)
+            apt_size.pop(res)
             result_count += 1
             break
 
