@@ -35,6 +35,7 @@ def rabin_karp(s, t):
 
     return -1
 
+
 if __name__ == '__main__':
     text = input()
     k = int(input())
