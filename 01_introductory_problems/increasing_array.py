@@ -46,7 +46,6 @@ while i < n:
         moves += mx - arr[i]
 
     mx = max(arr[i], mx)
-
     i += 1
 
 print(moves)
