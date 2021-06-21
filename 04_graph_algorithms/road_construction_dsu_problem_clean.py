@@ -40,6 +40,7 @@ if __name__ == '__main__':
         u, v = list(map(int, input().split()))
         u = u - 1
         v = v - 1
-        dsu.union(u, v)
+        if dsu.find(u) != dsu.find(v):
+            dsu.union(u, v)
         print(len(dsu), max(dsu.size))
         i += 1
