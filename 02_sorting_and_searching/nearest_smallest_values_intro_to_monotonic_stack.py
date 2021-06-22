@@ -67,7 +67,19 @@ def nearest_smaller_values_optimized(A, n):
     print(result)
 
 
+def nearest_smaller_values_more_optimize(arr, n):
+    """ Finally the accepted solution"""
+    stack = []
+    for i in range(n):
+        while stack and arr[stack[-1]] >= arr[i]:
+            stack.pop()
+        if not stack:
+            print(0, end=' ')
+        else:
+            print(stack[-1]+1, end=' ')
+        stack.append(i)
+
 if __name__ == "__main__":
     n = int(input())
     arr = list(map(int, input().split()))
-    nearest_smaller_values_optimized(arr, n)
+    nearest_smaller_values_more_optimize(arr, n)
