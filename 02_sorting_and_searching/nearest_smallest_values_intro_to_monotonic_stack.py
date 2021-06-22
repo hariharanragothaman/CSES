@@ -53,17 +53,17 @@ def nearest_smaller_values_optimized(A, n):
     stack = [0]
     A = [0] + A
 
-    print("The array is:")
-    print(*A)
+    # print("The array is:")
+    # print(*A)
 
     for i in range(1, n+1):
-        print("The incoming number is:", A[i])
+        # print("The incoming number is:", A[i])
         while A[stack[-1]] >= A[i]:
             stack.pop()
         result += str(stack[-1]) + ' '
         stack.append(i)
-        print("The stack is:", stack)
-        print("*"*10)
+        # print("The stack is:", stack)
+        # print("*"*10)
     print(result)
 
 if __name__ == "__main__":
