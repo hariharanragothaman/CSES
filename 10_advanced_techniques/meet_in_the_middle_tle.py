@@ -39,8 +39,7 @@ def meet_in_the_middle(arr, n, target) -> int:
         hmap[c] += 1
 
     for c in second_subset_sum:
-        if target - c in hmap:
-            count += hmap[target - c]
+        count += hmap.get(target-c, 0)
 
     print(count)
 
