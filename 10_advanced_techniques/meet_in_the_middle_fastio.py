@@ -147,23 +147,13 @@ def meet_in_the_middle(arr, n, target) -> int:
     pivot = n >> 1
     arr1 = arr[:pivot]
     arr2 = arr[pivot:]
-    # first_subset_sum = get_subsets_sum(arr1)
-
-    # -------------------------------
+    first_subset_sum = get_subsets_sum(arr1)
+    second_subset_sum = get_subsets_sum(arr2)
+    count = 0
     hmap = defaultdict(int)
 
-    first_subset_sum = [0]
-    for c in powerset(arr1):
-        if c:
-            total = sum(list(c))
-        else:
-            total = 0
-        first_subset_sum.append(total)
-        hmap[total] += 1
-
-    second_subset_sum = get_subsets_sum(arr2)
-
-    count = 0
+    for c in first_subset_sum:
+        hmap[c] += 1
 
     for c in second_subset_sum:
         count += hmap.get(target - c, 0)
