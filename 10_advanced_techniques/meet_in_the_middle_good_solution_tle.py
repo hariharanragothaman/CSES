@@ -1,7 +1,7 @@
 from typing import List
 from itertools import chain, combinations
 from bisect import bisect_left
-from collections import defaultdict
+from collections import Counter
 
 
 def powerset(iterable):
@@ -33,7 +33,7 @@ def meet_in_the_middle(arr, n, target) -> int:
     second_subset_sum = get_subsets_sum(arr2)
 
     count = 0
-    hmap = defaultdict(int)
+    hmap = Counter()
 
     for c in first_subset_sum:
         hmap[c] += 1
