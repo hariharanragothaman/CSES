@@ -19,6 +19,7 @@ the map.
 
 from collections import Counter
 
+
 def count_subarrays_with_target_sum(arr, n, target):
     result_count = 0
     prefix_sum = 0
