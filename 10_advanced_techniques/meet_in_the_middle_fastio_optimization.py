@@ -7,6 +7,7 @@ def main():
     n, target = map(int, input().split())
     arr = list(map(int, input().split()))
     se = Counter()
+    se1 = Counter()
 
     ls = []
     for i in range(n // 2):
@@ -18,7 +19,7 @@ def main():
         ls.append(x)
         se[x] += 1
 
-    se1 = Counter()
+    print(f"The ls is: {ls}")
 
     ls = []
     for i in range(n // 2, n):
@@ -30,6 +31,7 @@ def main():
         ls.append(x)
         se1[x] += 1
 
+    print(f"The ls is: {ls}")
     ans = se[target] + se1[target]
 
     for i in se:
