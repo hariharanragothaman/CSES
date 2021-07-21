@@ -1,35 +1,41 @@
-class RangeQuery:
-    def __init__(self, data, func=min):
-        self.func = func
-        self._data = _data = [list(data)]
-        i, n = 1, len(_data[0])
-        while 2 * i <= n:
-            prev = _data[-1]
-            _data.append([func(prev[j], prev[j + i]) for j in range(n - 2 * i + 1)])
-            i <<= 1
+class SegmentTree:
+    def __init__(self, arr, function):
+        self.tree = [None for _ in range(len(arr))] + arr
+        self.size = len(arr)
+        self.fn = function
+        self.build_tree()
 
-    def query(self, start, stop):
-        """func of data[start, stop)"""
-        depth = (stop - start).bit_length() - 1
-        return self.func(self._data[depth][start], self._data[depth][stop - (1 << depth)])
+    def build_tree(self):
+        for i in range(self.size - 1, 0, -1):
+            self.tree[i] = self.fn(self.tree[i * 2], self.tree[i * 2 + 1])
 
-    def __getitem__(self, idx):
-        return self._data[0][idx]
+    def update(self, p, v):
+        p += self.size
+        self.tree[p] = v
+        while p > 1:
+            p = p // 2
+            self.tree[p] = self.fn(self.tree[p * 2], self.tree[p * 2 + 1])
 
+    def query(self, l, r):
+        l, r = l + self.size, r + self.size
+        res = None
+        while l <= r:
+            if l % 2 == 1:
+                res = self.tree[l] if res is None else self.fn(res, self.tree[l])
+            if r % 2 == 0:
+                res = self.tree[r] if res is None else self.fn(res, self.tree[r])
+            l, r = (l + 1) // 2, (r - 1) // 2
+        return res
 
-def solve(arr, a, b):
-    rQ = RangeQuery(data=arr)
-    if a == b:
-        return arr[b-1]
-    op = rQ.query(a-1, b-1)
-    return op
 
 if __name__ == '__main__':
-    n, q = map(int, input().split())
+    n, k = list(map(int, input().split()))
     arr = list(map(int, input().split()))
+    seg_tree = SegmentTree(arr, function=min)
     i = 0
-    while i < q:
-        a, b = map(int, input().split())
-        op = solve(arr, a, b)
-        print(op)
+    while i < k:
+        left, right = list(map(int, input().split()))
+        left, right = left-1, right-1
+        result = seg_tree.query(left, right)
+        print(result)
         i += 1
