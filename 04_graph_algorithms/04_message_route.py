@@ -9,9 +9,7 @@ start_time = time.time()
 
 def solve(g, n, m, start=1):
     """
-    The actual solution begins here
-    c = a + b
-    print(c)
+    Basically asking us to find the shortest path from 1 to n
     """
 
     vertex = list(range(1, n+1))
