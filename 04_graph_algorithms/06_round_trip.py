@@ -29,8 +29,8 @@ if __name__ == "__main__":
 
     # If it's Local - Get I/P from file
     if LOCAL:
-        sys.stdin = open("data.in", "r")
-        sys.stdout = open("data.out", "w")
+        sys.stdin = open("../io/data.in", "r")
+        sys.stdout = open("../io/data.out", "w")
 
     testcases = int(input())
     for i in range(testcases):
