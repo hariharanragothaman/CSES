@@ -14,7 +14,6 @@ using namespace std;
 void solve(vector<pair<int, int>>& A, int& n)
 {
     vector<pair<int, int>> linesweep;
-    vector<int> start, end;
     for(auto c: A)
     {
         linesweep.emplace_back(make_pair(c.first, 1));
