@@ -75,7 +75,6 @@ int main()
     ENABLEFASTIO();
     int n, queries;
     cin >> n >> queries;
-    map<int, vector<int>> graph;
     vector<int> arr(n+1, 0);
     for(int i=2; i<n+1; i++)
         cin >> arr[i];
