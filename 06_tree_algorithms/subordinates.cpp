@@ -1,7 +1,6 @@
-//
-// Created by Hariharan Ragothaman on 11/2/21.
-//
-
+/*
+ *  Concept: Post Order Traversal
+ */
 #include "bits/stdc++.h"
 using namespace std;
 
