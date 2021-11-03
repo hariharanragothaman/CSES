@@ -21,11 +21,19 @@ using namespace std;
 int jmp(int k, int x, vector<vector<int>>& UP)
 {
     /* Get the kth ancestor of x */
+    /*
+     *  Here we find how the number can be represented as
+     *  a sum of powers of 2
+     *  so if k = 13 for example 1101 in binary 2^0, 2^2, 2^3
+     *  It's set at bit 1 - at 0,2,3 locations.
+     *  So it will enter the if conditions when i = 0, 2, 3..
+     */
     int MAX_POWER = UP.size();
     for(int i=0; i<MAX_POWER; i++)
     {
         if( (k >> i) & 1 )
         {
+            cout << "Entering if condition " << i << endl;
             x = UP[i][x];
         }
     }
