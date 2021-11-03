@@ -8,9 +8,15 @@
  * https://aryansh.gitbook.io/informatics-notes/binary-lifting/binary-lifting-gold-part-1
  */
 
+// GCC Optimizations
+#pragma GCC optimize("Ofast")
+#pragma GCC optimize("unroll-loops")
+#pragma GCC optimize("inline")
+
 #include "bits/stdc++.h"
 using namespace std;
 
+#define ENABLEFASTIO() ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
 int jmp(int k, int x, vector<vector<int>>& UP)
 {
@@ -58,6 +64,7 @@ void solve(vector<int>& arr, int& n, int& employee, int& k)
 
 int main()
 {
+    ENABLEFASTIO();
     int n, queries;
     cin >> n >> queries;
     map<int, vector<int>> graph;
