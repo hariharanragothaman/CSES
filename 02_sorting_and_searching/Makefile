@@ -27,7 +27,7 @@ default: build
 
 .PHONY: build
 build:
-	${CXX} ${CXXFLAGS} ${PROBLEM_NAME}.cpp -o ${PROBLEM_NAME}
+	${CXX} ${CXXFLAGS}  ${PROBLEM_NAME}.cpp -o ${PROBLEM_NAME}
 
 .PHONY: run
 run: build
