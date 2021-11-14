@@ -15,16 +15,26 @@ ofstream  o_data("../io/data.out");
 int main()
 {
     ENABLEFASTIO();
-    long long int n;
-    cin >> n;
-    vector<long long int> arr(n, 0);
 
-    long long int total = 0;
-    for(int i=0; i<n; i++)
+    string s;
+    cin >> s;
+    int n = s.size();
+    int repeats = 0;
+    int ans = 0;
+    for(int i=1; i<n; i++)
     {
-        cin >> arr[i];
-        total += arr[i];
+        if(s[i] == s[i-1])
+        {
+            repeats++;
+        }
+        else
+        {
+            ans = max(ans, repeats);
+            repeats = 0;
+        }
+        ans = max(ans, repeats);
     }
-    cout << ((n*(n+1) >> 1) - total) << endl;
+    cout << ans+1 << endl;
+
     return 0;
 }
