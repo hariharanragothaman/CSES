@@ -4,7 +4,7 @@
 # |                    |
 # +--------------------+
 
-PROBLEM_NAME := contest
+PROBLEM_NAME := concert_tickets
 DEBUG := true
 LANG := cpp
 
@@ -27,8 +27,13 @@ default: build
 
 .PHONY: build
 build:
-	${CXX} ${CXXFLAGS} ${PROBLEM_NAME}.cpp -o ${PROBLEM_NAME}
+	@ mkdir -p "output"
+	${CXX} ${CXXFLAGS}  ${PROBLEM_NAME}.cpp -o output/${PROBLEM_NAME}
 
 .PHONY: run
 run: build
-	./${PROBLEM_NAME}
+	./output/${PROBLEM_NAME}
+
+.PHONY: clean
+clean:
+	rm -rf output/
