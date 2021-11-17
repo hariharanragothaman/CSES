@@ -5,6 +5,11 @@
     <option name="linkedExternalProjectsSettings">
       <MakefileProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/02_sorting_and_searching" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/02_sorting_and_searching" />
+          </set>
+        </option>
         <option name="version" value="2" />
       </MakefileProjectSettings>
     </option>

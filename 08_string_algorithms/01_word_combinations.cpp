@@ -95,7 +95,6 @@ int main()
     {
         cin >> word;
         obj->insert(word);
-
     }
 
     return 0;
