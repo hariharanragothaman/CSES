@@ -31,16 +31,13 @@ def counting_rooms(g, R, C):
                 if g[nr][nc] == ".":
                     q.append((nr, nc))
 
-    floors = []
     rooms = 0
     for i in range(R):
         for j in range(C):
             if g[i][j] == ".":
-                floors.append((i, j))
                 dfs(g, (i, j))
                 rooms += 1
     return rooms
-    # print("The places where the floor are:", floors)
 
 
 if __name__ == "__main__":
@@ -49,7 +46,5 @@ if __name__ == "__main__":
     for i in range(n):
         s = [c for c in input()]
         arr[i] = s
-    # print(arr)
     result = counting_rooms(arr, n, m)
-    # print(f"The number of rooms is: {result}")
     print(result)
