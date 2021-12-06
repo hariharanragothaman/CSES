@@ -32,7 +32,7 @@ int main()
     for(long long int msk=0; msk < (1<<n); msk++)
     {
         long long int s = 0;
-        // Going throgh the length of the combination generated
+        // Going through the length of the combination generated
         for(long long int j=0; j<n; j++) {
             // The if basically checks - position that have '1'
             // in the current combination

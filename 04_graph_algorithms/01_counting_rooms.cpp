@@ -1,23 +1,8 @@
-//
-// Created by Hariharan Ragothaman on 11/28/21.
-//
-
 #include "bits/stdc++.h"
 using namespace std;
 #define ENABLEFASTIO() ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
-vector<vector<int>> get_neighbours(int r, int c, int R, int C)
-{
-    vector<vector<int>> directions = {{r+1, c}, {r, c+1}, {r-1, c}, {r, c-1}};
-    vector<vector<int>> nei;
-    for(auto d: directions)
-    {
-        if(0 <= d[0] && d[0]< R && d[1] >= 0 && d[1] < C)
-            nei.push_back({d[0], d[1]});
-    }
-    return nei;
-}
-
+const std::pair<int, int> moves[] = {{-1, 0}, {0, -1}, {0, 1}, {1, 0}};
 
 void dfs(vector<vector<char>>& A, int& r, int& c, int& R, int& C)
 {
@@ -25,18 +10,37 @@ void dfs(vector<vector<char>>& A, int& r, int& c, int& R, int& C)
     Q.push_back(make_pair(r, c));
     pair<int, int> node;
 
+    int nr, nc;
+
     while(!Q.empty())
     {
         node = Q.back();
         Q.pop_back();
         A[node.first][node.second] = '#';   // Mark node as visited
-        vector<vector<int>> nei = get_neighbours(node.first, node.second, R, C);
-        for(auto nr: nei)
-            if(A[nr[0]][nr[1]] == '.')
-                Q.push_back(make_pair(nr[0], nr[1]));
+
+        nr = node.first;
+        nc = node.second;
+
+        for(auto [dx, dy]: moves)
+        {
+            dx += nr;
+            dy += nc;
+            if (0 <= dx && dx < R && dy >= 0 && dy < C)
+                if (A[dx][dy] == '.')
+                    Q.push_back(make_pair(dx, dy));
+        }
     }
 }
 
+//#define LOCAL
+#ifdef LOCAL
+ifstream  i_data("../io/data.in");
+ofstream  o_data("../io/data.out");
+#define cin  i_data
+#define cout o_data
+#else
+// Submit to Online Judge
+#endif
 
 int main()
 {
