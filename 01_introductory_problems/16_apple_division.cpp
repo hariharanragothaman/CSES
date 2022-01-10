@@ -36,7 +36,8 @@ int main()
         for(long long int j=0; j<n; j++) {
             // The if basically checks - position that have '1'
             // in the current combination
-            if (msk & (1 << j)) {
+            if (msk & (1 << j)) 
+            {
                 s += arr[j];
             }
             current = abs((total - s)-s);

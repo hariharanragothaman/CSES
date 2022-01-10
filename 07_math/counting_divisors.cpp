@@ -1,10 +1,3 @@
-//
-// Created by Hariharan Ragothaman on 11/1/21.
-//
-
-//
-// Created by Hariharan Ragothaman on 10/31/21.
-//
 #include<bits/stdc++.h>
 using namespace std;
 
