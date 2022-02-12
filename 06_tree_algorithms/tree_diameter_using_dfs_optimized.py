@@ -1,3 +1,10 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+# File              : tree_diameter_using_dfs_optimized.py
+# Author            : cppygod
+# Date              : 12.02.2022
+# Last Modified Date: 12.02.2022
+# Last Modified By  : cppygod
 from collections import defaultdict, deque
 
 

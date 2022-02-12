@@ -1,3 +1,10 @@
+/**
+ * File              : common_divisors.cpp
+ * Author            : cppygod
+ * Date              : 23.01.2022
+ * Last Modified Date: 23.01.2022
+ * Last Modified By  : cppygod
+ */
 #include<bits/stdc++.h>
 using namespace std;
 #define ENABLEFASTIO() ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)

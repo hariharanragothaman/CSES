@@ -1,3 +1,10 @@
+/**
+ * File              : diameter_of_tree.cpp
+ * Author            : cppygod
+ * Date              : 12.02.2022
+ * Last Modified Date: 12.02.2022
+ * Last Modified By  : cppygod
+ */
 #include "bits/stdc++.h"
 using namespace std;
 

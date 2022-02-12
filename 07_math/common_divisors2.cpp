@@ -1,3 +1,10 @@
+/**
+ * File              : common_divisors2.cpp
+ * Author            : cppygod
+ * Date              : 23.01.2022
+ * Last Modified Date: 23.01.2022
+ * Last Modified By  : cppygod
+ */
 //
 // Created by Hariharan Ragothaman on 11/1/21.
 //
