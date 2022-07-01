@@ -1,7 +1,10 @@
-//
-// Created by Hariharan Ragothaman on 11/17/21.
-//
-
+/**
+ * File              : dice_combinations.cpp
+ * Author            : cppygod
+ * Date              : 31.01.2022
+ * Last Modified Date: 31.01.2022
+ * Last Modified By  : cppygod
+ */
 #include "bits/stdc++.h"
 using namespace std;
 #define ENABLEFASTIO() ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)

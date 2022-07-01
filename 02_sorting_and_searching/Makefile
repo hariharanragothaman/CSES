@@ -1,7 +1,7 @@
 # File              : Makefile
 # Author            : cppygod
 # Date              : 23.01.2022
-# Last Modified Date: 23.02.2022
+# Last Modified Date: 04.03.2022
 # Last Modified By  : cppygod
 
 # +--------------------+
@@ -23,7 +23,7 @@ endif
 
 ifeq ($(lang),cpp)
 TARGET := $(pname)
-EXECUTE := ./$(TARGET)
+EXECUTE := $(TARGET)
 CLEAN_TARGETS := $(TARGET)
 
 else ifeq ($(lang),python)
@@ -63,9 +63,12 @@ endif
 .PHONY: run
 run: build
 ifeq ($(lang),cpp)
-	timeout 1.0s $(EXECUTE) && cat data.out 
+	timeout 1.0s $(EXECUTE) || exit 0 
+	cat data.out 
+
 else ifeq ($(lang),python)
-	timeout 1.0s $(EXECUTE) && cat data.out 
+	timeout 1.0s $(EXECUTE) || exit 0
+	cat data.out
 else 
 endif 
 
