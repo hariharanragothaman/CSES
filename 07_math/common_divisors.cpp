@@ -2,7 +2,7 @@
  * File              : common_divisors.cpp
  * Author            : cppygod
  * Date              : 23.01.2022
- * Last Modified Date: 23.01.2022
+ * Last Modified Date: 30.04.2022
  * Last Modified By  : cppygod
  */
 #include<bits/stdc++.h>

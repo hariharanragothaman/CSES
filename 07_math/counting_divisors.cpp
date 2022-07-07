@@ -1,9 +1,13 @@
+/**
+ * File              : counting_divisors.cpp
+ * Author            : cppygod
+ * Date              : 30.04.2022
+ * Last Modified Date: 30.04.2022
+ * Last Modified By  : cppygod
+ */
 #include<bits/stdc++.h>
 using namespace std;
 
-#pragma GCC optimize("Ofast")
-#pragma GCC optimize("unroll-loops")
-#pragma GCC optimize("inline")
 #define ENABLEFASTIO() ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
 
