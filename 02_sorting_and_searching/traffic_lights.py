@@ -55,7 +55,6 @@ def solve(x, n, P):
  
     for i in range(n):
         idx = bisect(stack, P[i])
-        #        print(stack[idx-1], stack[idx])
         left_dist = P[i] - stack[idx - 1]
         right_dist = stack[idx] - P[i]
         ctr[left_dist] += 1
@@ -68,7 +67,6 @@ def solve(x, n, P):
             del ctr[total]
  
         print(max(ctr.keys()), end=" ")
-        #stack = stack[:idx] + [P[i]] + stack[idx:]
         stack.insert(idx, P[i])
  
 def main():
