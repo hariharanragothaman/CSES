@@ -56,7 +56,7 @@ Awesome! Why does X = Y & -Y give us the lowest bit? Here is an explanation:
 
 def generate_gray_code(n):
     res = [0]
-    for i in range(1, 2 ** n):
+    for i in range(1, 2**n):
         res.append(res[-1] ^ (i & -i))
     return res
 
