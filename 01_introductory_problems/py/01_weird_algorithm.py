@@ -330,7 +330,6 @@ alpha = [chr(c) for c in range(ord("A"), ord("Z") + 1)]
 hmap = {}
 for c in alpha:
     hmap[c] = False
-print(hmap)
 
 
 def copy2d(lst):
@@ -414,8 +413,9 @@ def solve():
 
 
 if __name__ == "__main__":
-    sys.stdin = open("data.in", "r")
-    sys.stdout = open("data.out", "w")
+    if os.path.exists("data.in"):
+        sys.stdin = open("data.in", "r")
+        sys.stdout = open("data.out", "w")
     # testcases = int(input())
     testcases = 1
     for i in range(testcases):
