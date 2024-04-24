@@ -4,19 +4,19 @@ import time
 
 
 def solve():
-    n = int(input())
-    A = input_as_array()
-    n = len(A)
-
-    ans = 0
+    S = input()
+    cnt = 1
+    n = len(S)
+    max_cnt = 1
 
     for i in range(1, n):
-        if A[i] < A[i-1]:
-            tmp = abs(A[i] - A[i-1])
-            A[i] += tmp
-            ans += tmp
+        if S[i] == S[i - 1]:
+            cnt += 1
+            max_cnt = max(max_cnt, cnt)
+        else:
+            cnt = 1
 
-    print(ans)
+    print(max_cnt)
 
 
 def main() -> None:
