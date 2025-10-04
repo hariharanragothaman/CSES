@@ -1,34 +1,83 @@
-# +--------------------+
-# |                    |
-# |   GENERAL CONFIG   |
-# |                    |
-# +--------------------+
+# ---- Config ----
+pname    ?= contest
+CXX      ?= g++
+TIMEOUT  ?= timeout 1.0s        # macOS: use gtimeout
+DEBUG    ?= 0                   # DEBUG=1 enables sanitizers + debug
+COMPILER := $(shell $(CXX) --version | head -n 1)
 
-PROBLEM_NAME := contest
-DEBUG := true
-LANG := cpp
+# ---- Warnings (portable base) ----
+BASE_WARNINGS := -Wall -Wextra -Wpedantic -Wshadow -Wformat=2 -Wfloat-equal -Wconversion \
+                 -Wcast-qual -Wcast-align -Wno-unused-result -Wno-sign-conversion \
+                 -Wvla -Wnull-dereference
 
-CXX := g++
-CXXFLAGS := -std=c++17 -O2 -Wall -Wextra -pedantic -Wshadow -Wformat=2 -Wfloat-equal -Wconversion -Wlogical-op -Wshift-overflow=2 -Wduplicated-cond -Wcast-qual -Wcast-align -Wno-unused-result -Wno-sign-conversion
-DEBUG_CXXFLAGS := -fsanitize=address -fsanitize=undefined -fsanitize=float-divide-by-zero -fsanitize=float-cast-overflow -fno-sanitize-recover=all -fstack-protector-all -D_FORTIFY_SOURCE=2
-DEBUG_CXXFLAGS += -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC
-PRECOMPILE_HEADERS := bits/stdc++.h
+# ---- Compiler-specific extras ----
+ifeq ($(findstring clang,$(COMPILER)),clang)
+  # Clang-specific goodies
+  COMP_WARNINGS := -Wrange-loop-analysis -Wpessimizing-move -Wredundant-move \
+                   -Wimplicit-fallthrough -Woverloaded-virtual -Wnon-virtual-dtor \
+                   -Wextra-semi
+  DIAG_COLOR := -fcolor-diagnostics
+else
+  # GCC-only extras
+  COMP_WARNINGS := -Wlogical-op -Wshift-overflow=2 -Wduplicated-cond -Wuseless-cast \
+                   -Wimplicit-fallthrough=5 -Woverloaded-virtual -Wnon-virtual-dtor
+  DIAG_COLOR := -fdiagnostics-color=always
+endif
 
+BASEFLAGS := -std=c++20 $(BASE_WARNINGS) $(COMP_WARNINGS) $(DIAG_COLOR)
 
-# +-------------------+
-# |                   |
-# |   GENERAL RULES   |
-# |                   |
-# +-------------------+
+# ---- Build flags (debug vs release) ----
+ifeq ($(DEBUG),1)
+  ifeq ($(findstring clang,$(COMPILER)),clang)
+    CXXFLAGS := $(BASEFLAGS) -O0 -g3 -fno-omit-frame-pointer \
+                -fsanitize=address,undefined,float-divide-by-zero,float-cast-overflow
+    # If using libc++ and you want extra iterator/assert checks, uncomment:
+    # CXXFLAGS += -D_LIBCPP_ENABLE_ASSERTIONS=1 -D_LIBCPP_ENABLE_DEBUG_MODE=1
+  else
+    CXXFLAGS := $(BASEFLAGS) -O0 -g3 -fno-omit-frame-pointer \
+                -fsanitize=address,undefined,float-divide-by-zero,float-cast-overflow \
+                -fno-sanitize-recover=all -fstack-protector-all -D_FORTIFY_SOURCE=2 \
+                -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC
+  endif
+else
+  CXXFLAGS := $(BASEFLAGS) -O2
+endif
 
+# ---- Default: build + run ----
+.PHONY: all
+all: $(pname)
+	$(TIMEOUT) ./$(pname)
 
-.PHONY: default
-default: build
+# ---- Build (single source: pname.cpp) ----
+$(pname): $(pname).cpp
+	$(CXX) $(CXXFLAGS) $< -o $@
 
-.PHONY: build
-build:
-	g++-11 ${CXXFLAGS} ${PROBLEM_NAME}.cpp -o ${PROBLEM_NAME}
+# ---- Test: feed input file and (optionally) diff expected ----
+# Usage:
+#   make test                       # uses data.in -> data.out
+#   make test FILE=case1.in OUT=case1.out
+#   make test FILE=case1.in OUT=case1.out EXPECT=case1.exp
+FILE   ?= data.in
+OUT    ?= data.out
+EXPECT ?=
 
-.PHONY: run
-run: build
-	./${PROBLEM_NAME}
+.PHONY: test
+test: $(pname)
+	@if [ -f "$(FILE)" ]; then \
+	  echo ">> Running: ./$(pname) < $(FILE) > $(OUT)"; \
+	  $(TIMEOUT) ./$(pname) < "$(FILE)" > "$(OUT)"; \
+	  if [ -n "$(EXPECT)" ] && [ -f "$(EXPECT)" ]; then \
+	    echo ">> Diffing: $(OUT) vs $(EXPECT)"; \
+	    diff -u "$(EXPECT)" "$(OUT)" || true; \
+	  else \
+	    echo ">> Output:"; \
+	    cat "$(OUT)"; \
+	  fi; \
+	else \
+	  echo "No such input file: $(FILE)"; \
+	fi
+
+# ---- Clean ----
+.PHONY: clean
+clean:
+	rm -f $(pname) $(OUT)
