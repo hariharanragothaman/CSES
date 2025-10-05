@@ -93,7 +93,6 @@ int main()
     while(T--)
     {
         object.solve();
-        ldebug();
     }
     return 0;
 }
