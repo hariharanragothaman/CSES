@@ -2,6 +2,11 @@
  *    FOCUS + DETERMINATION + SHEER-WILL
  */
 
+/*
+ * Note:
+ * Usual BFS, Just really annoying to also compute the directions.
+ */
+
 #ifndef ONLINE_JUDGE
 #include "headers.h"
 #else

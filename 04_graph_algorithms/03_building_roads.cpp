@@ -2,6 +2,10 @@
  *    FOCUS + DETERMINATION + SHEER-WILL
  */
 
+/*
+ * Note:
+ * Count the number connected components - Very straightforward
+ */
 #ifndef ONLINE_JUDGE
 #include "headers.h"
 #else

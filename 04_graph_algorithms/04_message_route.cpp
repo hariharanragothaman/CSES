@@ -2,6 +2,12 @@
  *    FOCUS + DETERMINATION + SHEER-WILL
  */
 
+/*
+ * Note:
+ * Straightforward BFS, remember to have a parent-map for the path.
+ *
+ */
+
 #ifndef ONLINE_JUDGE
 #include "headers.h"
 #else

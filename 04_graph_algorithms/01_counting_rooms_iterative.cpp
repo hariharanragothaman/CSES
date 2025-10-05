@@ -2,6 +2,12 @@
  *    FOCUS + DETERMINATION + SHEER-WILL
  */
 
+/*
+ * Note:
+ * This is basically like - Number of Islands
+ *
+ */
+
 #ifndef ONLINE_JUDGE
 #include "../headers.h"
 #else
