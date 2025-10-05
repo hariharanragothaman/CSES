@@ -40,23 +40,8 @@ inline void fast_io() {
     cout.tie(nullptr);
 }
 
-inline bool fileExists (const std::string& name)
-{
-    struct stat buffer;
-    return (stat (name.c_str(), &buffer) == 0);
-}
-
-inline void ldebug()
-{
-    if(fileExists("data.in"))
-        cout << string(25, '-');
-    cout << endl;
-}
-
 class Solution
 {
-    vector<vector<int>> C;
-
 public:
     void solve()
     {
