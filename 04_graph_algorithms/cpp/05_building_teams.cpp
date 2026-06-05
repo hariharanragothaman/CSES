@@ -2,12 +2,8 @@
  *    FOCUS + DETERMINATION + SHEER-WILL
  */
 
-/*
- * Note:
- * Count the number connected components - Very straightforward
- */
 #ifndef ONLINE_JUDGE
-#include "headers.h"
+#include "../../headers.h"
 #else
 #include "bits/stdc++.h"
     #include "sys/stat.h"
@@ -43,28 +39,13 @@ class Solution
     vector<vector<int>> C;
 
 public:
-    void connectedComponents(vector<vector<int>>& G, int start, vector<bool>& visited)
-    {
-        deque<int> Q = {start};
-        visited[start] = true;
-        vector<int> component;
-        while(!Q.empty())
-        {
-            auto node = Q.back(); Q.pop_back();
-            component.push_back(node);
-            for(auto c: G[node]) if(!visited[c]) visited[c] = true, Q.push_back(c);
-        }
-        C.push_back(component);
-    }
-
     void solve()
     {
         int n, m;
         cin >> n >> m;
 
-        /* Creating the adjacency matrix */
-        int u{}, v{};
         vector<vector<int>> G(n+1);
+        int u, v;
         for(int i=0; i<m; i++)
         {
             cin >> u >> v;
@@ -72,27 +53,40 @@ public:
             G[v].push_back(u);
         }
 
-        /* Calculating Connected Components*/
-        int cnt{};
-        vector<bool> visited(n+1, 0);
-        for(int i=1; i<=n; i++)
+        vector<int> color(n+1, 0); // 0=uncolored, 1/2 teams
+        deque<int> Q;
+
+        for(int node=1; node<=n; node++) // Maybe the graph is disconnected.
         {
-            if(!visited[i])
+            if(color[node]) continue; // Already colored
+            color[node] = 1;
+            Q.push_back(node);
+
+            while(!Q.empty())
             {
-                connectedComponents(G, i, visited);
-                cnt++;
+                auto u = Q.front(); Q.pop_front();
+                for(auto nei: G[u])
+                {
+                    if(!color[nei])
+                    {
+                        color[nei] = 3 - color[u];
+                        Q.push_back(nei);
+                    }
+                    else if(color[nei] == color[u])
+                    {
+                        cout << "IMPOSSIBLE" << endl;
+                        return;
+                    }
+                }
             }
         }
 
-        // Number of roads to be constructed is component - 1
-        cout << cnt - 1 << endl;
-        vector<int> result;
-        for(auto comp: C)
-            result.push_back(comp.front());
-        for(int i=0; i<result.size()-1; i++)
+        for(int i=1;i<=n;i++)
         {
-            cout << result[i] << " " << result[i+1] << "\n";
+            if(i>1) cout << ' ';
+            cout << color[i];
         }
+        cout << '\n';
     }
 };
 

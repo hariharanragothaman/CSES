@@ -2,14 +2,8 @@
  *    FOCUS + DETERMINATION + SHEER-WILL
  */
 
-/*
- * Note:
- * This is basically like - Number of Islands
- *
- */
-
 #ifndef ONLINE_JUDGE
-#include "../headers.h"
+#include "../../headers.h"
 #else
 #include "bits/stdc++.h"
     #include "sys/stat.h"
@@ -45,28 +39,19 @@ class Solution
 public:
     void dfs(vector<vector<char>>& A, int i, int j, int n, int m)
     {
-        deque<pair<int, int>> Q;
-        Q.push_back(make_pair(i, j));
-        pair<int, int> node;
-
-        int nr, nc;
-
-        while(!Q.empty())
+        if(A[i][j] != '.')
         {
-            node = Q.back();
-            Q.pop_back();
-            A[node.first][node.second] = '#';   // Mark node as visited
-
-            nr = node.first;
-            nc = node.second;
-            vector<pair<int, int>> moves = {{1, 0}, {0, -1}, {0, 1}, {-1, 0}};
-            for(auto [dx, dy]: moves)
+            return;
+        }
+        A[i][j] = '#';
+        vector<pair<int, int>> nei = {{1, 0}, {0, -1}, {0, 1}, {-1, 0}};
+        for(auto [x, y]: nei)
+        {
+            int nx = i + x;
+            int ny = j + y;
+            if(nx < n and nx >= 0 and ny < m and ny >= 0)
             {
-                dx += nr;
-                dy += nc;
-                if (0 <= dx && dx < n && dy >= 0 && dy < m)
-                    if (A[dx][dy] == '.')
-                        Q.push_back(make_pair(dx, dy));
+                dfs(A, nx, ny, n, m);
             }
         }
     }

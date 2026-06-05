@@ -2,8 +2,14 @@
  *    FOCUS + DETERMINATION + SHEER-WILL
  */
 
+/*
+ * Note:
+ * Straightforward BFS, remember to have a parent-map for the path.
+ *
+ */
+
 #ifndef ONLINE_JUDGE
-#include "headers.h"
+#include "../../headers.h"
 #else
 #include "bits/stdc++.h"
     #include "sys/stat.h"
@@ -36,16 +42,13 @@ inline void fast_io() {
 
 class Solution
 {
-    vector<vector<int>> C;
-
 public:
     void solve()
     {
         int n, m;
         cin >> n >> m;
-
+        int u{}, v{};
         vector<vector<int>> G(n+1);
-        int u, v;
         for(int i=0; i<m; i++)
         {
             cin >> u >> v;
@@ -53,40 +56,55 @@ public:
             G[v].push_back(u);
         }
 
-        vector<int> color(n+1, 0); // 0=uncolored, 1/2 teams
-        deque<int> Q;
+        int start = 1;
 
-        for(int node=1; node<=n; node++) // Maybe the graph is disconnected.
+        deque<pair<int, int>> Q;
+        Q.push_back({start, 0});
+
+        vector<bool> visited(n+1, 0);
+        visited[start] = true;
+
+        vector<int> P(n+1, -1);
+
+        while(!Q.empty())
         {
-            if(color[node]) continue; // Already colored
-            color[node] = 1;
-            Q.push_back(node);
-
-            while(!Q.empty())
+            auto [node, distance] = Q.front(); Q.pop_front();
+            if(node == n)
             {
-                auto u = Q.front(); Q.pop_front();
-                for(auto nei: G[u])
+                cout << distance + 1 << endl;
+                break;
+            }
+            for(auto nei: G[node])
+            {
+                if(!visited[nei])
                 {
-                    if(!color[nei])
-                    {
-                        color[nei] = 3 - color[u];
-                        Q.push_back(nei);
-                    }
-                    else if(color[nei] == color[u])
-                    {
-                        cout << "IMPOSSIBLE" << endl;
-                        return;
-                    }
+                    visited[nei] = true;
+                    P[nei] = node;
+                    Q.push_back({nei, distance + 1});
                 }
             }
         }
-
-        for(int i=1;i<=n;i++)
+        if(P[n] == -1)
         {
-            if(i>1) cout << ' ';
-            cout << color[i];
+            cout << "IMPOSSIBLE" << endl;
         }
-        cout << '\n';
+        else
+        {
+            int tmp = n;
+            vector<int> path;
+            path.push_back(n);
+            while(P[tmp] != -1)
+            {
+                path.push_back(P[tmp]);
+                tmp = P[tmp];
+            }
+            reverse(path.begin(), path.end());
+            for(auto c: path)
+            {
+                cout << c << " ";
+            }
+            cout << endl;
+        }
     }
 };
 

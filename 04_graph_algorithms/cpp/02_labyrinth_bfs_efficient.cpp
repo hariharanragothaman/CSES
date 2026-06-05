@@ -8,7 +8,7 @@
  */
 
 #ifndef ONLINE_JUDGE
-#include "headers.h"
+#include "../../headers.h"
 #else
 #include "bits/stdc++.h"
     #include "sys/stat.h"

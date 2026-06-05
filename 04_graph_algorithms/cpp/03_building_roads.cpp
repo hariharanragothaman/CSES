@@ -4,12 +4,10 @@
 
 /*
  * Note:
- * Straightforward BFS, remember to have a parent-map for the path.
- *
+ * Count the number connected components - Very straightforward
  */
-
 #ifndef ONLINE_JUDGE
-#include "headers.h"
+#include "../../headers.h"
 #else
 #include "bits/stdc++.h"
     #include "sys/stat.h"
@@ -42,11 +40,29 @@ inline void fast_io() {
 
 class Solution
 {
+    vector<vector<int>> C;
+
 public:
+    void connectedComponents(vector<vector<int>>& G, int start, vector<bool>& visited)
+    {
+        deque<int> Q = {start};
+        visited[start] = true;
+        vector<int> component;
+        while(!Q.empty())
+        {
+            auto node = Q.back(); Q.pop_back();
+            component.push_back(node);
+            for(auto c: G[node]) if(!visited[c]) visited[c] = true, Q.push_back(c);
+        }
+        C.push_back(component);
+    }
+
     void solve()
     {
         int n, m;
         cin >> n >> m;
+
+        /* Creating the adjacency matrix */
         int u{}, v{};
         vector<vector<int>> G(n+1);
         for(int i=0; i<m; i++)
@@ -56,54 +72,26 @@ public:
             G[v].push_back(u);
         }
 
-        int start = 1;
-
-        deque<pair<int, int>> Q;
-        Q.push_back({start, 0});
-
+        /* Calculating Connected Components*/
+        int cnt{};
         vector<bool> visited(n+1, 0);
-        visited[start] = true;
-
-        vector<int> P(n+1, -1);
-
-        while(!Q.empty())
+        for(int i=1; i<=n; i++)
         {
-            auto [node, distance] = Q.front(); Q.pop_front();
-            if(node == n)
+            if(!visited[i])
             {
-                cout << distance + 1 << endl;
-                break;
-            }
-            for(auto nei: G[node])
-            {
-                if(!visited[nei])
-                {
-                    visited[nei] = true;
-                    P[nei] = node;
-                    Q.push_back({nei, distance + 1});
-                }
+                connectedComponents(G, i, visited);
+                cnt++;
             }
         }
-        if(P[n] == -1)
+
+        // Number of roads to be constructed is component - 1
+        cout << cnt - 1 << endl;
+        vector<int> result;
+        for(auto comp: C)
+            result.push_back(comp.front());
+        for(int i=0; i<result.size()-1; i++)
         {
-            cout << "IMPOSSIBLE" << endl;
-        }
-        else
-        {
-            int tmp = n;
-            vector<int> path;
-            path.push_back(n);
-            while(P[tmp] != -1)
-            {
-                path.push_back(P[tmp]);
-                tmp = P[tmp];
-            }
-            reverse(path.begin(), path.end());
-            for(auto c: path)
-            {
-                cout << c << " ";
-            }
-            cout << endl;
+            cout << result[i] << " " << result[i+1] << "\n";
         }
     }
 };
