@@ -3,9 +3,11 @@
 
 import importlib.util
 import re
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT / "scripts"))
 
 _spec = importlib.util.spec_from_file_location(
     "generate_cpp_placeholders",
@@ -244,8 +246,13 @@ def main() -> None:
             existing.add(path.stem)
             created += 1
 
+    from ensure_test_io import ensure_test_io_files
+
+    io_created = ensure_test_io_files(ROOT)
+
     print(f"Created {created} placeholder files")
     print(f"Skipped {skipped} existing/solved problems")
+    print(f"Ensured test I/O files ({io_created} newly created)")
 
 
 if __name__ == "__main__":
