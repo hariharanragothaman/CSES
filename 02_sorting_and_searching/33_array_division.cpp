@@ -1,27 +1,7 @@
-/*
- *
- *  Similar Binary earch problems
- *  1. Factory machines CSES
- *  2. beautiful item in each query leetcode
- *  3. 1201C - CF
- */
-// Ref: https://usaco.guide/problems/cses-1620-factory-machines/solution
-
-#include "bits/stdc++.h"
+#include <bits/stdc++.h>
 using namespace std;
-#define ENABLEFASTIO() ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
-#define endl "\n"
 #define int long long
-
-//#define LOCAL
-#ifdef LOCAL
-ifstream  i_data("../io/data.in");
-ofstream  o_data("../io/data.out");
-#define cin  i_data
-#define cout o_data
-#else
-// Submit to Online Judge
-#endif
+#define endl "\n"
 
 /*
  *  For each product you need to make
@@ -53,7 +33,9 @@ bool check(int pivot, vector<int> arr, int n, int k)
 
 int32_t main()
 {
-    ENABLEFASTIO();
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
     int n;
     int k;
     cin >> n >> k;
@@ -82,5 +64,3 @@ int32_t main()
 
     return 0;
 }
-
-

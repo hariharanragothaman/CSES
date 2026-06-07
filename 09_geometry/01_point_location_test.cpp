@@ -1,11 +1,5 @@
-//
-// Created by Hariharan Ragothaman on 11/28/21.
-//
-
-#include "bits/stdc++.h"
+#include <bits/stdc++.h>
 using namespace std;
-
-#define ENABLEFASTIO() ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
 void solve()
 {
@@ -20,7 +14,9 @@ void solve()
 
 int main()
 {
-    ENABLEFASTIO();
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
     int T;
     cin >> T;
     while(T--) solve();

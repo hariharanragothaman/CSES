@@ -1,17 +1,14 @@
-#include <iostream>
-#include <math.h>
-#include <vector>
-#include <string>
-#include <algorithm>
+#include <bits/stdc++.h>
+using namespace std;
+
 #define lli long long int
 #define li long int
 #define ld long double
-using namespace std;
 
 int main()
 {
     ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
+    cin.tie(nullptr);
     lli k;
     cin >> k;
     for (lli n = 1; n <= k; n++)

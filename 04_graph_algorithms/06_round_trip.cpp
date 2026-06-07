@@ -26,7 +26,6 @@ An undirected graph has Eulerian Path if following two conditions are true.
 ….b) If zero or two vertices have odd degree and all other vertices have even degree. 
 Note that only one vertex with odd degree is not possible in an undirected graph (sum of all degrees is always even in an undirected graph)
 
-
 */
 
 bool check_for_euler_circuit()

@@ -1,15 +1,5 @@
-/**
- * File              : counting_divisors.cpp
- * Author            : cppygod
- * Date              : 30.04.2022
- * Last Modified Date: 30.04.2022
- * Last Modified By  : cppygod
- */
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-
-#define ENABLEFASTIO() ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
-
 
 const int maxn = 2e5+10;
 bool have_gondola_yet[maxn];
@@ -36,7 +26,9 @@ int find_all_divisors(int n)
 }
 
 int main(){
-    ENABLEFASTIO();
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
     int T;
     cin >> T;
     int x;

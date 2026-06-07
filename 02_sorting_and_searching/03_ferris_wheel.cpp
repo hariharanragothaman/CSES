@@ -1,14 +1,5 @@
-//
-// Created by Hariharan Ragothaman on 10/31/21.
-//
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-
-#pragma GCC optimize("Ofast")
-#pragma GCC optimize("unroll-loops")
-#pragma GCC optimize("inline")
-#define ENABLEFASTIO() ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
-
 
 const int maxn = 2e5+10;
 bool have_gondola_yet[maxn];
@@ -50,7 +41,9 @@ void solve()
 }
 
 int main(){
-    ENABLEFASTIO();
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
     solve();
     return 0;
 }

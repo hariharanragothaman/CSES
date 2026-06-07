@@ -1,25 +1,7 @@
-/**
- * File              : dice_combinations.cpp
- * Author            : cppygod
- * Date              : 31.01.2022
- * Last Modified Date: 31.01.2022
- * Last Modified By  : cppygod
- */
-#include "bits/stdc++.h"
+#include <bits/stdc++.h>
 using namespace std;
-#define ENABLEFASTIO() ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
-#define endl "\n"
 #define int long long
-
-//#define LOCAL
-#ifdef LOCAL
-ifstream  i_data("../io/data.in");
-ofstream  o_data("../io/data.out");
-#define cin  i_data
-#define cout o_data
-#else
-// Submit to Online Judge
-#endif
+#define endl "\n"
 
 int32_t main()
 {

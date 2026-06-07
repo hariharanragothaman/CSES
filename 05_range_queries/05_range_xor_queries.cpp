@@ -1,22 +1,7 @@
-//
-// Created by Hariharan Ragothaman on 11/15/21.
-//
-
-#include "bits/stdc++.h"
+#include <bits/stdc++.h>
 using namespace std;
-#define ENABLEFASTIO() ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
-#define endl "\n"
 #define int long long
-
-//#define LOCAL
-#ifdef LOCAL
-ifstream  i_data("../io/data.in");
-ofstream  o_data("../io/data.out");
-#define cin  i_data
-#define cout o_data
-#else
-// Submit to Online Judge
-#endif
+#define endl "\n"
 
 class SegmentTree
 {
@@ -81,10 +66,11 @@ public:
 
 };
 
-
 int32_t main()
 {
-    ENABLEFASTIO();
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
     int n, q;
     cin >> n >> q;
     vector<int> arr(n, 0);
@@ -105,6 +91,3 @@ int32_t main()
 
     return 0;
 }
-
-
-

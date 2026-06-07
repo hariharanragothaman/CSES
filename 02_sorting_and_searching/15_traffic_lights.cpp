@@ -1,19 +1,10 @@
-/**
- * File              : traffic_lights.cpp
- * Author            : cppygod
- * Date              : 06.07.2022
- * Last Modified Date: 07.07.2022
- * Last Modified By  : cppygod
- */
-
-#include <iostream>
-#include <set>
+#include <bits/stdc++.h>
 using namespace std;
- 
+
 int main() 
 {
 	ios::sync_with_stdio(false);
-	cin.tie(NULL);
+	cin.tie(nullptr);
  
 	int street_len;
 	int light_num;

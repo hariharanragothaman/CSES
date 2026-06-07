@@ -1,15 +1,7 @@
-//
-// Created by Hariharan Ragothaman on 10/29/21.
-//
-#pragma GCC optimize("Ofast")
-#pragma GCC optimize("unroll-loops")
-#pragma GCC optimize("inline")
+#include <bits/stdc++.h>
+using namespace std;
 
 // GODSPEED
-#define ENABLEFASTIO() ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
-
-#include<bits/stdc++.h>
-using namespace std;
 
 void solve(vector<pair<int, int>>& A, int& n)
 {
@@ -33,20 +25,11 @@ void solve(vector<pair<int, int>>& A, int& n)
     cout << count << endl;
 }
 
-#define ONLINE_JUDGE   /* IF not ONLINE_JUDGE Comment this line*/
-
-#ifndef ONLINE_JUDGE
-ifstream  i_data("../io/data.in");
-ofstream  o_data("../io/data.out");
-#define cin  i_data
-#define cout o_data
-#else
-#endif
-
-
 int main()
 {
-    ENABLEFASTIO();
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
     int n;
     cin >> n;
     vector<pair<int, int>> arr;

@@ -1,20 +1,5 @@
-//
-// Created by Hariharan Ragothaman on 11/28/21.
-//
-
-#include "bits/stdc++.h"
+#include <bits/stdc++.h>
 using namespace std;
-
-
-//#define LOCAL
-#ifdef LOCAL
-ifstream  i_data("../io/data.in");
-ofstream  o_data("../io/data.out");
-#define cin  i_data
-#define cout o_data
-#else
-// Submit to Online Judge
-#endif
 
 int hamming(int a, int b)
 {

@@ -1,9 +1,4 @@
-//
-// Created by Hariharan Ragothaman on 11/2/21.
-//
-
-
-#include "bits/stdc++.h"
+#include <bits/stdc++.h>
 using namespace std;
 
 /*
@@ -16,8 +11,7 @@ class TrieNode
 public:
     bool isLeaf;
     TrieNode* children[26];
-    TrieNode()
-    {
+    TrieNode() {
         isLeaf = false;
         for(int i=0; i<26; i++) children[i] = NULL;
     }
@@ -27,8 +21,7 @@ class Trie
 {
 public:
     TrieNode* root;
-    Trie()
-    {
+    Trie(){
         root = new TrieNode;
     }
 
@@ -82,7 +75,6 @@ public:
 
 };
 
-
 int main()
 {
     string s;
@@ -99,23 +91,3 @@ int main()
 
     return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

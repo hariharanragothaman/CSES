@@ -1,13 +1,10 @@
-//
-// Created by Hariharan Ragothaman on 11/12/21.
-//
+#include <bits/stdc++.h>
+using namespace std;
 
 /*
  *  Trick reference: https://stackoverflow.com/questions/41028859/looping-over-a-bitmask
  *
  */
-#include "bits/stdc++.h"
-using namespace std;
 
 int main()
 {

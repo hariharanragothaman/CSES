@@ -1,14 +1,5 @@
-/**
- * File              : common_divisors.cpp
- * Author            : cppygod
- * Date              : 23.01.2022
- * Last Modified Date: 30.04.2022
- * Last Modified By  : cppygod
- */
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-#define ENABLEFASTIO() ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
-
 
 // This whole solution just goes to prove, that function calls are not free
 // Also another learning point here is that - we need to initialize stuff to zero. Always remember that!
@@ -36,7 +27,9 @@ set<int> find_all_divisors(int& n)
 
 int main()
 {
-    ENABLEFASTIO();
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
     int n;
     cin >> n;
 

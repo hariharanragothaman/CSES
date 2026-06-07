@@ -1,21 +1,7 @@
-//
-// Created by Hariharan Ragothaman on 11/12/21.
-//
-// Ref: https://usaco.guide/problems/cses-1620-factory-machines/solution
-
-#include "bits/stdc++.h"
+#include <bits/stdc++.h>
 using namespace std;
-#define ENABLEFASTIO() ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
-//#define LOCAL
-#ifdef LOCAL
-ifstream  i_data("../io/data.in");
-ofstream  o_data("../io/data.out");
-#define cin  i_data
-#define cout o_data
-#else
-// Submit to Online Judge
-#endif
+// Ref: https://usaco.guide/problems/cses-1620-factory-machines/solution
 
 /*
  *  For each product you need to make
@@ -25,7 +11,9 @@ ofstream  o_data("../io/data.out");
 
 int main()
 {
-    ENABLEFASTIO();
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
     int n;
     int t;
     cin >> n >> t;
@@ -63,4 +51,3 @@ int main()
     cout << ans << endl;
     return 0;
 }
-

@@ -2,18 +2,53 @@
 File    : 01_word_combinations.py
 Problem : Word Combinations
 Section : String Algorithms
-Status  : UNSOLVED (placeholder)
+Status  : SOLVED
+Approach: DP on prefix length + trie for word lookup
+Alt     : 01_word_combinations_alt_backtracking.py
+Note    : Contest-optimized inline trie. See trie.py for reusable class version.
 """
 
-import os
-import sys
-import time
+MOD = 10**9 + 7
 
+def solve() -> None:
+    s = input().strip()
+    k = int(input())
+    trie = [{}]
+    end = [False]
 
-def solve():
-    # TODO: not solved
-    pass
+    for _ in range(k):
+        word = input().strip()
+        node = 0
 
+        for ch in word:
+            if ch not in trie[node]:
+                trie[node][ch] = len(trie)
+                trie.append({})
+                end.append(False)
+
+            node = trie[node][ch]
+
+        end[node] = True
+
+    n = len(s)
+    dp = [0] * (n + 1)
+    dp[n] = 1
+
+    for i in range(n - 1, -1, -1):
+        node = 0
+
+        for j in range(i, n):
+            ch = s[j]
+
+            if ch not in trie[node]:
+                break
+
+            node = trie[node][ch]
+
+            if end[node]:
+                dp[i] = (dp[i] + dp[j + 1]) % MOD
+
+    print(dp[0])
 
 def main() -> None:
     if os.path.exists("data.in"):
@@ -23,31 +58,10 @@ def main() -> None:
     start_time = time.time()
 
     solve()
-    debug("-")
 
     if os.path.exists("data.in"):
-        print(f"Time Elapsed: {time.time() - start_time} seconds")
+        sys.stdout.write(f"\nTime Elapsed: {time.time() - start_time} seconds")
         sys.stdout.close()
-
-
-# region debug
-
-def input_as_array() -> list[int]:
-    return list(map(int, input().split()))
-
-
-def debug(char) -> None:
-    if os.path.exists("data.in"):
-        print(char * 25)
-
-
-def debug2(value) -> None:
-    if os.path.exists("data.in"):
-        print(value)
-
-
-# endregion
-
 
 if __name__ == "__main__":
     main()

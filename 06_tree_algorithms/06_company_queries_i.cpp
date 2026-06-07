@@ -1,22 +1,5 @@
-/*
- * Concept: Binary Lifting
- * Side Concept: Any number can be represented as a power of 2 (Applying DP here)
- * References:
- * https://cses.fi/problemset/task/1687/
- * https://usaco.guide/plat/binary-jump
- * https://www.youtube.com/watch?v=MOy4UDjN8DM
- * https://aryansh.gitbook.io/informatics-notes/binary-lifting/binary-lifting-gold-part-1
- */
-
-// GCC Optimizations
-#pragma GCC optimize("Ofast")
-#pragma GCC optimize("unroll-loops")
-#pragma GCC optimize("inline")
-
-#include "bits/stdc++.h"
+#include <bits/stdc++.h>
 using namespace std;
-
-#define ENABLEFASTIO() ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
 int jmp(int k, int x, vector<vector<int>>& UP)
 {
@@ -72,7 +55,9 @@ void solve(vector<int>& arr, int& n, int& employee, int& k)
 
 int main()
 {
-    ENABLEFASTIO();
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
     int n, queries;
     cin >> n >> queries;
     vector<int> arr(n+1, 0);

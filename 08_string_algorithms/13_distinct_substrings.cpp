@@ -1,25 +1,13 @@
-//
-// Created by Hariharan Ragothaman on 11/15/21.
-//
-#include "bits/stdc++.h"
+#include <bits/stdc++.h>
 using namespace std;
-#define ENABLEFASTIO() ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
-#define endl "\n"
 #define int long long
-
-//#define LOCAL
-#ifdef LOCAL
-ifstream  i_data("../io/data.in");
-ofstream  o_data("../io/data.out");
-#define cin  i_data
-#define cout o_data
-#else
-// Submit to Online Judge
-#endif
+#define endl "\n"
 
 int32_t main()
 {
-    ENABLEFASTIO();
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
     string s;
     cin >> s;
     // Starting rolling hash
@@ -31,7 +19,6 @@ int32_t main()
     p_pow[0] = 1;
     for (int i = 1; i < n; i++)
         p_pow[i] = (p_pow[i-1] * p) % m;
-
 
     for(auto c: p_pow)
         cout << c << " " ;

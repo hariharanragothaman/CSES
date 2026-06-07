@@ -1,32 +1,13 @@
-//
-// Created by Hariharan Ragothaman on 11/1/21.
-//
-
-#pragma GCC optimize("Ofast")
-#pragma GCC optimize("unroll-loops")
-#pragma GCC optimize("inline")
-
-// GODSPEED
-#define ENABLEFASTIO() ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
-
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
-
-#define ONLINE_JUDGE   /* IF not ONLINE_JUDGE Comment this line*/
-
-#ifndef ONLINE_JUDGE
-ifstream  i_data("../io/data.in");
-ofstream  o_data("../io/data.out");
-#define cin  i_data
-#define cout o_data
-#else
-#endif
-
+// GODSPEED
 
 int main()
 {
-    ENABLEFASTIO();
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
     int n;
     cin >> n;
     vector<int> arr(n);

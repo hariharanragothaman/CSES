@@ -1,12 +1,7 @@
-#pragma GCC optimize("Ofast")
-#pragma GCC optimize("unroll-loops")
-#pragma GCC optimize("inline")
+#include <bits/stdc++.h>
+using namespace std;
 
 // GODSPEED
-#define ENABLEFASTIO() ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
-
-#include<bits/stdc++.h>
-using namespace std;
 
 bool sortBySecond(const pair<int,int> &a, const pair<int,int> &b)
 {
@@ -42,18 +37,11 @@ void solve()
 
 //#define ONLINE_JUDGE   /* IF not ONLINE_JUDGE Comment this line*/
 
-#ifndef ONLINE_JUDGE
-ifstream  i_data("../io/data.in");
-ofstream  o_data("../io/data.out");
-#define cin  i_data
-#define cout o_data
-#else
-#endif
-
-
 int main()
 {
-    ENABLEFASTIO();
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
     solve();
 
     return 0;

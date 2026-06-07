@@ -1,23 +1,12 @@
-/**
- * File              : common_divisors2.cpp
- * Author            : cppygod
- * Date              : 23.01.2022
- * Last Modified Date: 30.04.2022
- * Last Modified By  : cppygod
- */
-//
-// Created by Hariharan Ragothaman on 11/1/21.
-//
-
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
-#define ENABLEFASTIO() ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
 int cnt[1000001]; //stores count of divisors
 
 int main()
 {
-    ENABLEFASTIO();
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
 
 
     int n;

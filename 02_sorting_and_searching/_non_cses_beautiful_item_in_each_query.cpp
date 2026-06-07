@@ -1,9 +1,7 @@
-//
-// Created by Hariharan Ragothaman on 11/13/21.
-//
-// Reference: https://leetcode.com/problems/most-beautiful-item-for-each-query/
-#include "bits/stdc++.h"
+#include <bits/stdc++.h>
 using namespace std;
+
+// Reference: https://leetcode.com/problems/most-beautiful-item-for-each-query/
 
 vector<int> maximumBeauty(vector<vector<int>>& items, vector<int>& queries)
 {

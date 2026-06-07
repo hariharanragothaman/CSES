@@ -1,11 +1,4 @@
-/**
- * File              : diameter_of_tree.cpp
- * Author            : cppygod
- * Date              : 12.02.2022
- * Last Modified Date: 12.02.2022
- * Last Modified By  : cppygod
- */
-#include "bits/stdc++.h"
+#include <bits/stdc++.h>
 using namespace std;
 
 void getDiameter(map<int, vector<int>>&g, int& nodes)
@@ -19,7 +12,6 @@ void getDiameter(map<int, vector<int>>&g, int& nodes)
     int current_max_length = 0;
     pair<int, int> node_and_length;
     int arbitrary_node = 1;
-
 
     /* First time DFS to find the arbitrary node  */
     while(q.size() > 0)

@@ -1,14 +1,4 @@
-/**
- * File              : subordinates.cpp
- * Author            : cppygod
- * Date              : 12.02.2022
- * Last Modified Date: 12.02.2022
- * Last Modified By  : cppygod
- */
-/*
- *  Concept: Post Order Traversal
- */
-#include "bits/stdc++.h"
+#include <bits/stdc++.h>
 using namespace std;
 
 void solve( map<int, vector<int>>& graph, int n)
@@ -60,7 +50,6 @@ void solve( map<int, vector<int>>& graph, int n)
         cout << childrenCount[i] << " ";
     cout << endl;
 }
-
 
 int main()
 {
