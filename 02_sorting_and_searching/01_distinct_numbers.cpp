@@ -1,21 +1,22 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int main()
+void solve() 
 {
-    int  n;
+    int n {};
     cin >> n;
-    vector<int> A(n);
-    for(int i=0; i<n; i++)
-        cin >> A[i];
-    map<int, int> hmap;
-
-    for(int i=0; i<n; i++)
-    {
-        hmap[A[i]] += 1;
+    set<int> s; 
+    int a = 0; 
+    for(int i=0; i<n; i++) {
+        cin >> a; 
+        s.insert(a);
     }
+    cout << s.size() << endl; 
+}
 
-    cout << hmap.size();
-    return 0;
-
+int32_t main(){
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    solve();
+	return 0; 
 }
