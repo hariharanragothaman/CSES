@@ -1,22 +1,3 @@
-"""
-n applicants and m free apartments
-Distribute m such that, as many applicants get it.
-
-Each applicant has a desired size - so they will accept any apartment whose size is close enough to the desired size
-if the desired size is x, applicant will accept [x-k, x+k] range
-print the number of applicants who will get an apartment
-
-Example:
-    4, 3, 5
-    k = 5
-    There are 3 free apartments
-    60, 45, 80, 60 - desire
-
-    45, 60, 60, 80 - sorting the desires
-    30, 60, 75 - apt size - sort it too
-
-"""
-
 n, m, k = map(int, input().split())
 desired_apt_size = list(map(int, input().split()))
 apt_size = list(map(int, input().split()))
