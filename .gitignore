@@ -5,6 +5,9 @@
 data.in
 data.out
 
+# Compiled binaries
+output/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
